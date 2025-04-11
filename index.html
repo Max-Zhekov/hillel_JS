@@ -6,6 +6,18 @@
     <title>Document</title>
   </head>
   <body>
-    <script></script>
+    <script>
+          let num = prompt("Введіть тризначне число")
+          const a = +num[0]
+          const b = +num[1]
+          const c = +num[2]
+          if (a === b && b === c) {
+        alert("Всі цифри однакові");
+      } else if (a === b || b === c || a === c) {
+        alert("Є однакові цифри");
+      } else {
+        alert("Всі цифри різні");
+      }
+    </script>
   </body>
 </html>
