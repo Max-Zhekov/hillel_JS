@@ -6,6 +6,47 @@
     <title>Document</title>
   </head>
   <body>
-    <script></script>
+    <script>
+        const birthYear = prompt('Який твій рік народження?')
+        const userLocation = prompt('Де ти живеш?')
+        const favoriteSport = prompt('Який твій улюблений від спорту?')
+
+        // USER AGE
+        const currentYear = new Date().getFullYear();
+        const userAge = birthYear !== null && !isNaN(birthYear) ? `Тобі зараз ${currentYear - birthYear}` : 'Шкода, що Ви не захотіли ввести свій рік народження';
+
+        // USER LOCATION
+        let userCity = '';
+
+        if (userLocation === null) {
+          userCity = 'Шкода, що Ви не захотіли ввести своє місце проживання';
+        } else  {
+            userCity = `Ти живеш у місті ${userLocation}`
+          if (userLocation.toLowerCase() === 'київ' || userLocation.toLowerCase() === 'вашингтон' || userLocation.toLowerCase() === 'лондон') {
+            if (userLocation.toLowerCase() === 'київ') {
+              userCity = 'Ти живеш у столиці України'
+            } else if (userLocation.toLowerCase() === 'Вашингтон') {
+              userCity = 'Ти живеш у столиці США'
+            } else {
+              userCity = 'Ти живеш у столиці Великобританії'
+            }
+        }
+      }
+        // USER SPORT
+        let userSport = '';
+        if (favoriteSport === null) {
+          userSport = 'Шкода, що Ви не захотіли ввести свій улюблений від спорту'
+        } else if (favoriteSport.toLowerCase() === 'футбол' || favoriteSport.toLowerCase() === 'теніс' || favoriteSport.toLowerCase() === 'баскетбол') {
+          if (favoriteSport.toLowerCase() === 'футбол') {
+            userSport = "Круто! Хочеш стати як Лео Мессі?";
+          } else if (favoriteSport.toLowerCase() === 'теніс') {
+            userSport = "Круто! Хочеш стати як Новак Джокович?";
+          } else {
+            userSport = "Круто! Хочеш стати як Майкл Джордан?";
+          }
+        }
+
+        alert(`${userAge} \n${userCity} \n${userSport}`)
+    </script>
   </body>
 </html>
