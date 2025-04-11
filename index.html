@@ -13,7 +13,7 @@
 
         // USER AGE
         const currentYear = new Date().getFullYear();
-        const userAge = birthYear !== null && !isNaN(birthYear) ? `Тобі зараз ${currentYear - birthYear}` : 'Шкода, що Ви не захотіли ввести свій рік народження';
+        const userAge = birthYear !== null && !isNaN(birthYear) ? `Тобі зараз ${currentYear - Number(birthYear)}` : 'Шкода, що Ви не захотіли ввести свій рік народження';
 
         // USER LOCATION
         let userCity = '';
@@ -25,7 +25,7 @@
           if (userLocation.toLowerCase() === 'київ' || userLocation.toLowerCase() === 'вашингтон' || userLocation.toLowerCase() === 'лондон') {
             if (userLocation.toLowerCase() === 'київ') {
               userCity = 'Ти живеш у столиці України'
-            } else if (userLocation.toLowerCase() === 'Вашингтон') {
+            } else if (userLocation.toLowerCase() === 'вашингтон') {
               userCity = 'Ти живеш у столиці США'
             } else {
               userCity = 'Ти живеш у столиці Великобританії'
@@ -41,8 +41,10 @@
             userSport = "Круто! Хочеш стати як Лео Мессі?";
           } else if (favoriteSport.toLowerCase() === 'теніс') {
             userSport = "Круто! Хочеш стати як Новак Джокович?";
-          } else {
+          } else if (sport === 'баскетбол') {
             userSport = "Круто! Хочеш стати як Майкл Джордан?";
+          } else {
+            userSport = `Класний вибір! ${favoriteSport} — чудовий спорт!`;
           }
         }
 
