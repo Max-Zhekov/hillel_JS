@@ -18,33 +18,40 @@
         // USER LOCATION
         let userCity = '';
 
-        if (userLocation === null) {
+        if (!userLocation) {
           userCity = 'Шкода, що Ви не захотіли ввести своє місце проживання';
         } else  {
             userCity = `Ти живеш у місті ${userLocation}`
           if (userLocation.toLowerCase() === 'київ' || userLocation.toLowerCase() === 'вашингтон' || userLocation.toLowerCase() === 'лондон') {
-            if (userLocation.toLowerCase() === 'київ') {
-              userCity = 'Ти живеш у столиці України'
-            } else if (userLocation.toLowerCase() === 'вашингтон') {
-              userCity = 'Ти живеш у столиці США'
-            } else {
-              userCity = 'Ти живеш у столиці Великобританії'
+            switch (userLocation.toLowerCase()) {
+              case 'київ':
+                userCity = 'Ти живеш у столиці України';
+                break;
+              case 'вашингтон':
+                userCity = 'Ти живеш у столиці США';
+                break;
+              default:
+                userCity = 'Ти живеш у столиці Великобританії';
             }
         }
       }
         // USER SPORT
         let userSport = '';
-        if (favoriteSport === null) {
+        if (!favoriteSport) {
           userSport = 'Шкода, що Ви не захотіли ввести свій улюблений від спорту'
-        } else if (favoriteSport.toLowerCase() === 'футбол' || favoriteSport.toLowerCase() === 'теніс' || favoriteSport.toLowerCase() === 'баскетбол') {
-          if (favoriteSport.toLowerCase() === 'футбол') {
-            userSport = "Круто! Хочеш стати як Лео Мессі?";
-          } else if (favoriteSport.toLowerCase() === 'теніс') {
-            userSport = "Круто! Хочеш стати як Новак Джокович?";
-          } else if (sport === 'баскетбол') {
-            userSport = "Круто! Хочеш стати як Майкл Джордан?";
-          } else {
-            userSport = `Класний вибір! ${favoriteSport} — чудовий спорт!`;
+        } else {
+          switch (favoriteSport.toLowerCase()) {
+            case 'футбол':
+              userSport = "Круто! Хочеш стати як Лео Мессі?";
+              break;
+            case 'теніс':
+              userSport = "Круто! Хочеш стати як Новак Джокович?";
+              break;
+            case 'баскетбол':
+              userSport = "Круто! Хочеш стати як Майкл Джордан?";
+              break;
+            default:
+              userSport = userSport = `Класний вибір! ${favoriteSport} — чудовий спорт!`;
           }
         }
 
