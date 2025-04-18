@@ -24,16 +24,16 @@
 
       function getRemoveChars (str, chars) {
 
-        str = str.split("")
+        let Newstr = str.split("")
 
         for (let i = 0; i <= chars.length - 1; i++) {
-          for (let j = str.length - 1; j >= 0; j--) {
-            if (str[j] === chars[i]) {
-              str.splice(j, 1)
+          for (let j = Newstr.length - 1; j >= 0; j--) {
+            if (Newstr[j] === chars[i]) {
+              Newstr.splice(j, 1)
             }
           }
         }
-        return str.join('');
+        return Newstr.join('');
       }
 
       console.log(getRemoveChars(userStr, userChars));
