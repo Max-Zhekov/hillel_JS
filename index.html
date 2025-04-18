@@ -6,6 +6,37 @@
     <title>Document</title>
   </head>
   <body>
-    <script></script>
+    <script>
+        const userStr = prompt('Please enter a string:');
+        const userChars = [];
+        let flag = true
+
+        while (flag) {
+          let input = prompt('Please enter a character to remove (one at a time). Click Cancel to finish:');
+          if (input === null) {
+            flag = false;
+          } else if (input.length === 1) {
+            userChars.push(input);
+          } else {
+            alert('Please enter only one character at a time.');
+          }
+        }
+
+      function getRemoveChars (str, chars) {
+
+        str = str.split("")
+
+        for (let i = 0; i <= chars.length - 1; i++) {
+          for (let j = str.length - 1; j >= 0; j--) {
+            if (str[j] === chars[i]) {
+              str.splice(j, 1)
+            }
+          }
+        }
+        return str.join('');
+      }
+
+      console.log(getRemoveChars(userStr, userChars));
+    </script>
   </body>
 </html>
