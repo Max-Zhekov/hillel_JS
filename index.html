@@ -6,6 +6,26 @@
     <title>Document</title>
   </head>
   <body>
-    <script></script>
+    <script>
+      const arrayWithDifferentTypes = [true, [], {}, 5, "fghfghghuesosdcvxc", 10, 'm', 15, 20]
+
+      function average (array) {
+        const newArray = []
+        let sum = 0;
+        for (let i = 0; i <= array.length - 1; i++) {
+          if (typeof array[i] === 'number') {
+            newArray.push(array[i])
+          }
+        }
+
+        for(let i = 0; i <= newArray.length - 1; i++) {
+          sum += newArray[i]
+        }
+
+        return sum/newArray.length
+      }
+
+      console.log(average(arrayWithDifferentTypes));
+    </script>
   </body>
 </html>
