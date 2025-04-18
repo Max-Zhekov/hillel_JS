@@ -11,13 +11,12 @@
       const arrayChar = ['e', 'a', 'b', 'e', 'n', 'q',];
 
       function getRemoveElement (array, item) {
-        let newArray = array
-        for(let i = newArray.length - 1; i >= 0; i--) {
+        for(let i = array.length - 1; i >= 0; i--) {
           if(array[i] === item) {
-            newArray.splice(i,1)
+            array.splice(i,1)
           }
         }
-        return newArray
+        return array
       }
 
       console.log(getRemoveElement(arrayNumber, 4));
