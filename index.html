@@ -12,14 +12,12 @@
       function average (array) {
         const newArray = []
         let sum = 0;
+
         for (let i = 0; i <= array.length - 1; i++) {
           if (typeof array[i] === 'number') {
             newArray.push(array[i])
+            sum += array[i]
           }
-        }
-
-        for(let i = 0; i <= newArray.length - 1; i++) {
-          sum += newArray[i]
         }
 
         return sum/newArray.length
