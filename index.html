@@ -6,6 +6,25 @@
     <title>Document</title>
   </head>
   <body>
-    <script></script>
+    <script>
+      function getNumberOver100 () {
+        let i = 10
+        while (i > 0) {
+          let userNumber = +prompt("Enter number grater than 100")
+
+          if (userNumber > 100) {
+            alert("YEEEPIII")
+            console.log(`Last input ${userNumber}`);
+            return true
+          } else {
+            alert("Try again")
+          }
+          i--
+        }
+        alert('No valid input after 10 attempts')
+        return false
+      }
+      getNumberOver100()
+    </script>
   </body>
 </html>
