@@ -27,6 +27,14 @@ li {
   margin-bottom: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+li span {
+  flex-grow: 1;
+  max-width: 70%;
+  word-break: break-all;
 }
 
 input {
@@ -44,6 +52,7 @@ button {
   color: white;
   border: none;
   cursor: pointer;
+  height: 30px;
 }
 
 #addBtn {

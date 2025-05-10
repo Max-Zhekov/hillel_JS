@@ -6,15 +6,30 @@ const addBtn = document.getElementById("addBtn");
 
 addBtn.addEventListener("click", function () {
   const taskText = taskInput.value.trim();
-  if (!taskText) return;
+
+  if (!taskText) {
+    alert("Будь ласка, введіть текст завдання");
+    return;
+  }
+
+  if (taskText.length > 100) {
+    alert("Занадто довгий текст (макс. 100 символів)");
+    return;
+  }
 
   const li = document.createElement("li");
-  li.innerHTML = `
-    <span>${taskText}</span>
-    <button class="btn-delete">Видалити</button>
-  `;
 
+  const span = document.createElement("span");
+  span.textContent = taskText;
+
+  const deleteBtn = document.createElement("button");
+  deleteBtn.classList = "btn-delete";
+  deleteBtn.textContent = "Видалити";
+  deleteBtn.setAttribute("aria-label", "Видалити завдання");
+
+  li.append(span, deleteBtn);
   taskList.appendChild(li);
+
   taskInput.value = "";
 });
 
