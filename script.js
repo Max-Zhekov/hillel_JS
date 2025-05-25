@@ -20,7 +20,7 @@ function Student(name, surname, birthYear, grades) {
   };
 
   this.present = () => {
-    const index = this.attendance.findIndex((element) => element === undefined);
+    const index = this.attendance.findIndex((element) => !element);
     if (index === -1) return;
     this.attendance[index] = true;
   };
@@ -35,7 +35,7 @@ function Student(name, surname, birthYear, grades) {
     const filledAttendance = this.attendance.filter(
       (item) => item !== undefined
     );
-    if (filledAttendance.length === 0) return "Немає даних про відвідування";
+    if (!filledAttendance.length) return "Немає даних про відвідування";
 
     const sumOfAttendance = filledAttendance.reduce(
       (acc, curr) => (curr ? acc + 1 : acc),
