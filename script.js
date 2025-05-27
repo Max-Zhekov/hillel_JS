@@ -1,17 +1,33 @@
 "use strict";
-class Coach {
-  constructor(name, speciality, rate) {
-    this.name = name;
-    this.speciality = speciality;
-    this.rate = rate;
+class BankAccount {
+  constructor(balance) {
+    this.balance = balance;
   }
 
-  displayInfo() {
-    return `Coach: ${this.name}, Specialization: ${this.speciality}, Rating: ${this.rate}`;
+  getBalance() {
+    return this.balance;
+  }
+
+  deposit(amount) {
+    if (amount <= 0) return "Сума для внесення має бути більше нуля";
+    return (this.balance += amount);
+  }
+
+  withdraw(amount) {
+    if (amount <= 0) return "Сума для зняття має бути більше нуля";
+    if (amount > this.balance) return "Недостатньо коштів на рахунку";
+    return (this.balance -= amount);
   }
 }
 
-const coach1 = new Coach("John Doe", "Fitness", 4.7);
-const coach2 = new Coach("Alice Smith", "Yoga", 4.9);
-console.log(coach1.displayInfo());
-console.log(coach2.displayInfo());
+const account1 = new BankAccount(1000);
+
+console.log(account1.getBalance()); // 1000
+
+account1.deposit(500);
+
+console.log(account1.getBalance()); // 1500
+
+account1.withdraw(200);
+
+console.log(account1.getBalance()); // 1300
