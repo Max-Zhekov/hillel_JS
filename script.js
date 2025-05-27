@@ -1,29 +1,17 @@
 "use strict";
-class Calculator {
-  add(num1, num2) {
-    return num1 + num2;
+class Coach {
+  constructor(name, speciality, rate) {
+    this.name = name;
+    this.speciality = speciality;
+    this.rate = rate;
   }
 
-  subtract(num1, num2) {
-    return num1 - num2;
-  }
-
-  multiply(num1, num2) {
-    return num1 * num2;
-  }
-
-  divide(num1, num2) {
-    if (num2 === 0) return "на нуль ділити не можна";
-    return num1 / num2;
+  displayInfo() {
+    return `Coach: ${this.name}, Specialization: ${this.speciality}, Rating: ${this.rate}`;
   }
 }
 
-const calc = new Calculator();
-
-console.log(calc.add(5, 3)); // 8
-
-console.log(calc.subtract(10, 4)); // 6
-
-console.log(calc.multiply(3, 6)); // 18
-
-console.log(calc.divide(8, 2)); // 4
+const coach1 = new Coach("John Doe", "Fitness", 4.7);
+const coach2 = new Coach("Alice Smith", "Yoga", 4.9);
+console.log(coach1.displayInfo());
+console.log(coach2.displayInfo());
