@@ -1,4 +1,18 @@
 {
+  "name": "hillel_js",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src -d build"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@babel/cli": "^7.27.2",
+    "@babel/core": "^7.27.4",
+    "@babel/preset-env": "^7.27.2"
+  },
   "dependencies": {
     "bootstrap": "^5.3.6",
     "jquery": "^3.7.1"
