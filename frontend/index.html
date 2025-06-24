@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>TODO List</title>
+  </head>
+  <body>
+    <h1>My TODO List</h1>
+    <input type="text" id="newTodo" placeholder="Enter todo..." />
+    <button onclick="addTodo()">Add</button>
+    <ul id="todoList"></ul>
+
+    <script>
+      const API_URL = "http://localhost:5000/api/todos";
+
+      async function fetchTodos() {
+        const res = await fetch(API_URL);
+        const todos = await res.json();
+        const list = document.getElementById("todoList");
+        list.innerHTML = "";
+
+        todos.forEach(todo => {
+          const li = document.createElement("li");
+
+          const textSpan = document.createElement("span");
+          textSpan.textContent = todo.title + (todo.completed ? " ✅" : "");
+          textSpan.style.cursor = "pointer";
+          textSpan.onclick = () => toggleComplete(todo._id, !todo.completed);
+          li.appendChild(textSpan);
+
+          // ✏️ Кнопка редактирования
+          const editBtn = document.createElement("button");
+          editBtn.textContent = "✏️";
+          editBtn.style.marginLeft = "10px";
+          editBtn.onclick = (e) => {
+            e.stopPropagation();
+            editTodo(todo);
+          };
+          li.appendChild(editBtn);
+
+          // ❌ Кнопка удаления
+          const delBtn = document.createElement("button");
+          delBtn.textContent = "❌";
+          delBtn.style.marginLeft = "5px";
+          delBtn.onclick = (e) => {
+            e.stopPropagation();
+            deleteTodo(todo._id);
+          };
+          li.appendChild(delBtn);
+
+          list.appendChild(li);
+        });
+      }
+
+      async function addTodo() {
+        const input = document.getElementById("newTodo");
+        const title = input.value.trim();
+        if (!title) return;
+        await fetch(API_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ title })
+        });
+        input.value = "";
+        fetchTodos();
+      }
+
+      async function toggleComplete(id, completed) {
+        await fetch(`${API_URL}/${id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ completed })
+        });
+        fetchTodos();
+      }
+
+      async function deleteTodo(id) {
+          await fetch(`${API_URL}/${id}`, {
+            method: "DELETE"
+          });
+          fetchTodos(); // обновим список после удаления
+      }
+
+      function editTodo(todo) {
+        const li = document.createElement("li");
+
+        const input = document.createElement("input");
+        input.value = todo.title;
+        li.appendChild(input);
+
+        const saveBtn = document.createElement("button");
+        saveBtn.textContent = "✅";
+        saveBtn.onclick = async () => {
+          const newTitle = input.value.trim();
+          if (!newTitle) return;
+
+          await fetch(`${API_URL}/${todo._id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ title: newTitle })
+          });
+          fetchTodos();
+        };
+        li.appendChild(saveBtn);
+
+        const list = document.getElementById("todoList");
+        const items = [...list.children];
+        const index = items.findIndex(el => el.textContent.includes(todo.title));
+        if (index !== -1) {
+          list.replaceChild(li, items[index]);
+        }
+      }
+
+      fetchTodos();
+    </script>
+  </body>
+</html>
