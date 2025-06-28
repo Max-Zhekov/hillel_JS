@@ -5,13 +5,11 @@ import DataTable from "./components/DataTable";
 
 function App() {
   return (
-    <>
-      <Container className="py-5">
-        <Header />
-        <CategoryButtons />
-        <DataTable />
-      </Container>
-    </>
+    <Container className="py-5">
+      <Header />
+      <CategoryButtons />
+      <DataTable />
+    </Container>
   );
 }
 
